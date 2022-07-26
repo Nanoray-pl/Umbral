@@ -6,9 +6,19 @@ using Nanoray.Umbral.Core;
 
 namespace Nanoray.Umbral.Constraints
 {
-    public enum LayoutConstraintRelation { LessThanOrEqual, Equal, GreaterThanOrEqual }
+    public enum LayoutConstraintRelation
+    {
+        LessThanOrEqual,
+        Equal,
+        GreaterThanOrEqual
+    }
 
-    public enum LayoutConstraintMultipleEdgeRelation { Equal, Inside, Outside }
+    public enum LayoutConstraintMultipleEdgeRelation
+    {
+        Equal,
+        Inside,
+        Outside
+    }
 
     public static class LayoutConstraintRelationExt
     {

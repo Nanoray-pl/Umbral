@@ -6,7 +6,13 @@ using Nanoray.Umbral.Core.Geometry;
 
 namespace Nanoray.Umbral.Core
 {
-    public enum ViewVisitingOrder { SuperviewFirstSubviewOrder, SuperviewLastSubviewOrder, VisibleOrder, HoverOrder }
+    public enum ViewVisitingOrder
+    {
+        SuperviewFirstSubviewOrder,
+        SuperviewLastSubviewOrder,
+        VisibleOrder,
+        HoverOrder
+    }
 
     public static class Views
     {

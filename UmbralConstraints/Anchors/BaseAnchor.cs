@@ -1,5 +1,3 @@
-using System;
-
 namespace Nanoray.Umbral.Constraints.Anchors
 {
     public abstract class BaseAnchor : IAnchor

@@ -1,4 +1,3 @@
-using System;
 using Nanoray.Umbral.Core.Geometry;
 
 namespace Nanoray.Umbral.Core

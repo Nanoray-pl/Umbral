@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Nanoray.Umbral.Core.Geometry;
 
 namespace Nanoray.Umbral.Core
 {
