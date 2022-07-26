@@ -107,13 +107,11 @@ namespace Nanoray.Umbral.Constraints
 
         /// <inheritdoc/>
         public bool Equals(LayoutConstraint<TPriority>? obj)
-            => obj is LayoutConstraint<TPriority> other
-            && other.Anchor1 == Anchor1
-            && other.Anchor2 == Anchor2
-            && other.Constant == Constant
-            && other.Multiplier == Multiplier
-            && other.Relation == Relation
-            && (IEquatable<TPriority>)other.Priority == (IEquatable<TPriority>)Priority;
+            => obj is LayoutConstraint<TPriority> other && other.Relation == Relation && (IEquatable<TPriority>)other.Priority == (IEquatable<TPriority>)Priority && (
+                (other.Anchor1 == Anchor1 && other.Anchor2 == Anchor2 && other.Constant == Constant && other.Multiplier == Multiplier)
+                ||
+                (other.Anchor1 == Anchor2 && other.Anchor2 == Anchor1 && other.Constant == -Constant && Multiplier != 0f && other.Multiplier == 1f / Multiplier)
+            );
 
         /// <inheritdoc/>
         public override bool Equals(object? obj)
@@ -121,7 +119,7 @@ namespace Nanoray.Umbral.Constraints
 
         /// <inheritdoc/>
         public override int GetHashCode()
-            => (Anchor1, Anchor2, Constant, Multiplier, Relation, Priority).GetHashCode();
+            => (Anchor1.GetHashCode() ^ (Anchor2?.GetHashCode() ?? 0), Math.Abs(Constant), Multiplier >= 1f ? Multiplier : (1f / Multiplier), Relation, Priority).GetHashCode();
 
         /// <inheritdoc/>
         public static bool operator ==(LayoutConstraint<TPriority> lhs, LayoutConstraint<TPriority> rhs)
