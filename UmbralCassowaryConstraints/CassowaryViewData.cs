@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Nanoray.Umbral.Constraints.Anchors;
 using Nanoray.Umbral.Core;
 
 namespace Nanoray.Umbral.Constraints.Cassowary
@@ -10,15 +11,19 @@ namespace Nanoray.Umbral.Constraints.Cassowary
         public event OwnerValueChangeEvent<View, (float? x, float? y)>? IntrinsicSizeChanged;
 
         internal View Owner { get; private init; }
-        internal ConstrainableView ConstrainableView { get; private init; }
-        internal IAnchor.Typed<IConstrainable.Horizontal>.Positional.WithOpposite LeftAnchor => LazyLeft.Value;
-        internal IAnchor.Typed<IConstrainable.Horizontal>.Positional.WithOpposite RightAnchor => LazyRight.Value;
-        internal IAnchor.Typed<IConstrainable.Vertical>.Positional.WithOpposite TopAnchor => LazyTop.Value;
-        internal IAnchor.Typed<IConstrainable.Vertical>.Positional.WithOpposite BottomAnchor => LazyBottom.Value;
-        internal IAnchor.Typed<IConstrainable.Horizontal>.Length WidthAnchor => LazyWidth.Value;
-        internal IAnchor.Typed<IConstrainable.Vertical>.Length HeightAnchor => LazyHeight.Value;
-        internal IAnchor.Typed<IConstrainable.Horizontal>.Positional CenterXAnchor => LazyCenterX.Value;
-        internal IAnchor.Typed<IConstrainable.Vertical>.Positional CenterYAnchor => LazyCenterY.Value;
+        internal CassowaryConstrainableView ConstrainableView { get; private init; }
+        internal ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal> LeftAnchor => LazyLeft.Value;
+        internal ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal> RightAnchor => LazyRight.Value;
+        internal ITypedPositionalAnchorWithOpposite<IConstrainable.Vertical> TopAnchor => LazyTop.Value;
+        internal ITypedPositionalAnchorWithOpposite<IConstrainable.Vertical> BottomAnchor => LazyBottom.Value;
+        internal ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal.RightToLeft> LeadingAnchor => LazyLeading.Value;
+        internal ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal.RightToLeft> TrailingAnchor => LazyTrailing.Value;
+        internal ITypedLengthAnchor<IConstrainable.Horizontal> WidthAnchor => LazyWidth.Value;
+        internal ITypedLengthAnchor<IConstrainable.Vertical> HeightAnchor => LazyHeight.Value;
+        internal ITypedPositionalAnchor<IConstrainable.Horizontal> CenterXAnchor => LazyCenterX.Value;
+        internal ITypedPositionalAnchor<IConstrainable.Vertical> CenterYAnchor => LazyCenterY.Value;
+
+        internal LayoutTextDirection LayoutTextDirection { get; set; } = LayoutTextDirection.Unspecified;
 
         internal float? IntrinsicWidth { get; set; } = null;
         internal float? IntrinsicHeight { get; set; } = null;
@@ -43,6 +48,8 @@ namespace Nanoray.Umbral.Constraints.Cassowary
         private readonly Lazy<EdgeAnchor<IConstrainable.Horizontal>> LazyRight;
         private readonly Lazy<EdgeAnchor<IConstrainable.Vertical>> LazyTop;
         private readonly Lazy<EdgeAnchor<IConstrainable.Vertical>> LazyBottom;
+        private readonly Lazy<EdgeAnchor<IConstrainable.Horizontal.RightToLeft>> LazyLeading;
+        private readonly Lazy<EdgeAnchor<IConstrainable.Horizontal.RightToLeft>> LazyTrailing;
         private readonly Lazy<LengthAnchor<IConstrainable.Horizontal>> LazyWidth;
         private readonly Lazy<LengthAnchor<IConstrainable.Vertical>> LazyHeight;
         private readonly Lazy<CenterAnchor<IConstrainable.Horizontal>> LazyCenterX;
@@ -68,6 +75,9 @@ namespace Nanoray.Umbral.Constraints.Cassowary
             LazyRight = new(() => new(constraintSystem.AsConstrainable(owner), RightVariable.Value, "Right", c => c.RightAnchor, c => c.LeftAnchor));
             LazyTop = new(() => new(constraintSystem.AsConstrainable(owner), TopVariable.Value, "Top", c => c.TopAnchor, c => c.BottomAnchor));
             LazyBottom = new(() => new(constraintSystem.AsConstrainable(owner), BottomVariable.Value, "Bottom", c => c.BottomAnchor, c => c.TopAnchor));
+            // TODO: proper RTL support
+            LazyLeading = new(() => new(constraintSystem.AsConstrainable(owner), LeftVariable.Value, "Leading", c => c.LeadingAnchor, c => c.TrailingAnchor));
+            LazyTrailing = new(() => new(constraintSystem.AsConstrainable(owner), RightVariable.Value, "Trailing", c => c.TrailingAnchor, c => c.LeadingAnchor));
             LazyWidth = new(() => new(constraintSystem.AsConstrainable(owner), RightVariable.Value - LeftVariable.Value, "Width", c => c.WidthAnchor));
             LazyHeight = new(() => new(constraintSystem.AsConstrainable(owner), BottomVariable.Value - TopVariable.Value, "Height", c => c.HeightAnchor));
             LazyCenterX = new(() => new(constraintSystem.AsConstrainable(owner), LeftVariable.Value - WidthAnchor.Expression * 0.5f, "CenterX", c => c.CenterXAnchor));

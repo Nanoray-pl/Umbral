@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
+using Nanoray.Umbral.Constraints.Anchors;
 using Nanoray.Umbral.Core;
 
 namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
@@ -9,7 +10,7 @@ namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
     {
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintToSuperview<TPriority>(
-            this IAnchor.Typed<IConstrainable.TwoDimensional>.Positional self,
+            this ITypedPositionalAnchor<IConstrainable.TwoDimensional> self,
             string? identifier,
             TPriority priority,
             float constant = 0f,
@@ -25,7 +26,7 @@ namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintToSuperview<TPriority>(
-            this IAnchor.Typed<IConstrainable.TwoDimensional>.Positional self,
+            this ITypedPositionalAnchor<IConstrainable.TwoDimensional> self,
             TPriority priority,
             float constant = 0f,
             float multiplier = 1f,
@@ -42,7 +43,7 @@ namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintToSuperview<TPriority>(
-            this IAnchor.Typed<IConstrainable.TwoDimensional>.Length self,
+            this ITypedLengthAnchor<IConstrainable.TwoDimensional> self,
             string? identifier,
             TPriority priority,
             float constant = 0f,
@@ -58,7 +59,7 @@ namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintToSuperview<TPriority>(
-            this IAnchor.Typed<IConstrainable.TwoDimensional>.Length self,
+            this ITypedLengthAnchor<IConstrainable.TwoDimensional> self,
             TPriority priority,
             float constant = 0f,
             float multiplier = 1f,
@@ -75,7 +76,7 @@ namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintToSuperviewOpposite<TPriority>(
-            this IAnchor.Typed<IConstrainable.TwoDimensional>.Positional.WithOpposite self,
+            this ITypedPositionalAnchorWithOpposite<IConstrainable.TwoDimensional> self,
             string? identifier,
             TPriority priority,
             float constant = 0f,
@@ -91,7 +92,7 @@ namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintToSuperviewOpposite<TPriority>(
-            this IAnchor.Typed<IConstrainable.TwoDimensional>.Positional.WithOpposite self,
+            this ITypedPositionalAnchorWithOpposite<IConstrainable.TwoDimensional> self,
             TPriority priority,
             float constant = 0f,
             float multiplier = 1f,

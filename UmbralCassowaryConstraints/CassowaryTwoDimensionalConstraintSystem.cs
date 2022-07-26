@@ -4,11 +4,12 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Cassowary;
+using Nanoray.Umbral.Constraints.Anchors;
 using Nanoray.Umbral.Core;
 
 namespace Nanoray.Umbral.Constraints.Cassowary
 {
-    public class CassowaryTwoDimensionalConstraintSystem : ITwoDimensionalConstraintSystem<float>
+    public class CassowaryTwoDimensionalConstraintSystem : IRightToLeftTwoDimensionalConstraintSystem<float>
     {
         private readonly ConditionalWeakTable<View, CassowaryViewData> ViewData = new();
         private readonly ClSimplexSolver ConstraintSolver = new() { AutoSolve = false };
@@ -117,55 +118,51 @@ namespace Nanoray.Umbral.Constraints.Cassowary
 
         #endregion
 
-        #region Constrainable views
-
         /// <inheritdoc/>
         [Pure]
-        public IConstrainable.TwoDimensional AsConstrainable(View view)
+        public IConstrainable.TwoDimensional.RightToLeft AsConstrainable(View view)
             => ObtainViewData(view).ConstrainableView;
-
-        #endregion
 
         #region View anchors
 
         /// <inheritdoc/>
         [Pure]
-        public IAnchor.Typed<IConstrainable.Horizontal>.Positional.WithOpposite GetLeftAnchor(View view)
+        public ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal> GetLeftAnchor(View view)
             => ObtainViewData(view).LeftAnchor;
 
         /// <inheritdoc/>
         [Pure]
-        public IAnchor.Typed<IConstrainable.Horizontal>.Positional.WithOpposite GetRightAnchor(View view)
+        public ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal> GetRightAnchor(View view)
             => ObtainViewData(view).RightAnchor;
 
         /// <inheritdoc/>
         [Pure]
-        public IAnchor.Typed<IConstrainable.Vertical>.Positional.WithOpposite GetTopAnchor(View view)
+        public ITypedPositionalAnchorWithOpposite<IConstrainable.Vertical> GetTopAnchor(View view)
             => ObtainViewData(view).TopAnchor;
 
         /// <inheritdoc/>
         [Pure]
-        public IAnchor.Typed<IConstrainable.Vertical>.Positional.WithOpposite GetBottomAnchor(View view)
+        public ITypedPositionalAnchorWithOpposite<IConstrainable.Vertical> GetBottomAnchor(View view)
             => ObtainViewData(view).BottomAnchor;
 
         /// <inheritdoc/>
         [Pure]
-        public IAnchor.Typed<IConstrainable.Horizontal>.Length GetWidthAnchor(View view)
+        public ITypedLengthAnchor<IConstrainable.Horizontal> GetWidthAnchor(View view)
             => ObtainViewData(view).WidthAnchor;
 
         /// <inheritdoc/>
         [Pure]
-        public IAnchor.Typed<IConstrainable.Vertical>.Length GetHeightAnchor(View view)
+        public ITypedLengthAnchor<IConstrainable.Vertical> GetHeightAnchor(View view)
             => ObtainViewData(view).HeightAnchor;
 
         /// <inheritdoc/>
         [Pure]
-        public IAnchor.Typed<IConstrainable.Horizontal>.Positional GetCenterXAnchor(View view)
+        public ITypedPositionalAnchor<IConstrainable.Horizontal> GetCenterXAnchor(View view)
             => ObtainViewData(view).CenterXAnchor;
 
         /// <inheritdoc/>
         [Pure]
-        public IAnchor.Typed<IConstrainable.Vertical>.Positional GetCenterYAnchor(View view)
+        public ITypedPositionalAnchor<IConstrainable.Vertical> GetCenterYAnchor(View view)
             => ObtainViewData(view).CenterYAnchor;
 
         #endregion
@@ -230,6 +227,43 @@ namespace Nanoray.Umbral.Constraints.Cassowary
         /// <inheritdoc/>
         public void SetVerticalCompressionResistancePriority(View view, float priority)
             => ObtainViewData(view).VerticalCompressionResistancePriority = priority;
+
+        #endregion
+
+        #region Right-to-left
+
+        [Pure]
+        public ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal.RightToLeft> GetLeadingAnchor(View view)
+            => ObtainViewData(view).LeadingAnchor;
+
+        [Pure]
+        public ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal.RightToLeft> GetTrailingAnchor(View view)
+            => ObtainViewData(view).TrailingAnchor;
+
+        [Pure]
+        public LayoutTextDirection GetEnvironmentLayoutTextDirection()
+            => LayoutTextDirection.LeftToRight;
+
+        [Pure]
+        public LayoutTextDirection GetLayoutTextDirection(View view)
+            => ObtainViewData(view).LayoutTextDirection;
+
+        public void SetLayoutTextDirection(View view, LayoutTextDirection direction)
+            => ObtainViewData(view).LayoutTextDirection = direction;
+
+        [Pure]
+        public LayoutTextDirection GetEffectiveLayoutTextDirection(View view)
+        {
+            var current = view;
+            while (current is not null)
+            {
+                var direction = GetLayoutTextDirection(current);
+                if (direction != LayoutTextDirection.Unspecified)
+                    return direction;
+                current = current.Superview;
+            }
+            return GetEnvironmentLayoutTextDirection();
+        }
 
         #endregion
 

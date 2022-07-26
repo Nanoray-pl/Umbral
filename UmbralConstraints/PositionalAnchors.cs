@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
+using Nanoray.Umbral.Constraints.Anchors;
 using Nanoray.Umbral.Core;
 
 namespace Nanoray.Umbral.Constraints
@@ -9,10 +10,10 @@ namespace Nanoray.Umbral.Constraints
     {
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintTo<TPriority, TConstrainable>(
-            this IAnchor.Typed<TConstrainable>.Positional self,
+            this ITypedPositionalAnchor<TConstrainable> self,
             string? identifier,
             TPriority priority,
-            IAnchor.Typed<TConstrainable>.Positional other,
+            ITypedPositionalAnchor<TConstrainable> other,
             float constant = 0f,
             float multiplier = 1f,
             LayoutConstraintRelation relation = LayoutConstraintRelation.Equal
@@ -23,9 +24,9 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintTo<TPriority, TConstrainable>(
-            this IAnchor.Typed<TConstrainable>.Positional self,
+            this ITypedPositionalAnchor<TConstrainable> self,
             TPriority priority,
-            IAnchor.Typed<TConstrainable>.Positional other,
+            ITypedPositionalAnchor<TConstrainable> other,
             float constant = 0f,
             float multiplier = 1f,
             LayoutConstraintRelation relation = LayoutConstraintRelation.Equal,
@@ -42,7 +43,7 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintTo<TPriority, TConstrainable>(
-            this IAnchor.Typed<TConstrainable>.Positional self,
+            this ITypedPositionalAnchor<TConstrainable> self,
             string? identifier,
             TPriority priority,
             TConstrainable other,
@@ -56,7 +57,7 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintTo<TPriority, TConstrainable>(
-            this IAnchor.Typed<TConstrainable>.Positional self,
+            this ITypedPositionalAnchor<TConstrainable> self,
             TPriority priority,
             TConstrainable other,
             float constant = 0f,
@@ -75,7 +76,7 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintToOpposite<TPriority, TConstrainable>(
-            this IAnchor.Typed<TConstrainable>.Positional.WithOpposite self,
+            this ITypedPositionalAnchorWithOpposite<TConstrainable> self,
             string? identifier,
             TPriority priority,
             TConstrainable other,
@@ -89,7 +90,7 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintToOpposite<TPriority, TConstrainable>(
-            this IAnchor.Typed<TConstrainable>.Positional.WithOpposite self,
+            this ITypedPositionalAnchorWithOpposite<TConstrainable> self,
             TPriority priority,
             TConstrainable other,
             float constant = 0f,

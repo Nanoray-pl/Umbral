@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
+using Nanoray.Umbral.Constraints.Anchors;
 using Nanoray.Umbral.Core;
 
 namespace Nanoray.Umbral.Constraints
@@ -9,7 +10,7 @@ namespace Nanoray.Umbral.Constraints
     {
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraint<TPriority>(
-            this IAnchor.Length self,
+            this ILengthAnchor self,
             string? identifier,
             TPriority priority,
             float constant,
@@ -20,7 +21,7 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraint<TPriority>(
-            this IAnchor.Length self,
+            this ILengthAnchor self,
             TPriority priority,
             float constant,
             LayoutConstraintRelation relation = LayoutConstraintRelation.Equal,
@@ -36,10 +37,10 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintTo<TPriority>(
-            this IAnchor.Length self,
+            this ILengthAnchor self,
             string? identifier,
             TPriority priority,
-            IAnchor.Length other,
+            ILengthAnchor other,
             float constant = 0f,
             float multiplier = 1f,
             LayoutConstraintRelation relation = LayoutConstraintRelation.Equal
@@ -49,9 +50,9 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintTo<TPriority>(
-            this IAnchor.Length self,
+            this ILengthAnchor self,
             TPriority priority,
-            IAnchor.Length other,
+            ILengthAnchor other,
             float constant = 0f,
             float multiplier = 1f,
             LayoutConstraintRelation relation = LayoutConstraintRelation.Equal,
@@ -67,7 +68,7 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintTo<TPriority, TConstrainable>(
-            this IAnchor.Typed<TConstrainable>.Length self,
+            this ITypedLengthAnchor<TConstrainable> self,
             string? identifier,
             TPriority priority,
             TConstrainable other,
@@ -81,7 +82,7 @@ namespace Nanoray.Umbral.Constraints
 
         [Pure]
         public static LayoutConstraint<TPriority> MakeConstraintTo<TPriority, TConstrainable>(
-            this IAnchor.Typed<TConstrainable>.Length self,
+            this ITypedLengthAnchor<TConstrainable> self,
             TPriority priority,
             TConstrainable other,
             float constant = 0f,

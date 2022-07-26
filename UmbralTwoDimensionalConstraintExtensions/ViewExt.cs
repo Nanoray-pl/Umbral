@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using Nanoray.Umbral.Constraints.Anchors;
 using Nanoray.Umbral.Core;
 
 namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
@@ -31,35 +32,35 @@ namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
         #region Anchors
 
         [Pure]
-        public static IAnchor.Typed<IConstrainable.Horizontal>.Positional.WithOpposite GetLeftAnchor(this View self)
+        public static ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal> GetLeftAnchor(this View self)
             => self.GetGenericConstraintSystem().GetLeftAnchor(self);
 
         [Pure]
-        public static IAnchor.Typed<IConstrainable.Horizontal>.Positional.WithOpposite GetRightAnchor(this View self)
+        public static ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal> GetRightAnchor(this View self)
             => self.GetGenericConstraintSystem().GetRightAnchor(self);
 
         [Pure]
-        public static IAnchor.Typed<IConstrainable.Vertical>.Positional.WithOpposite GetTopAnchor(this View self)
+        public static ITypedPositionalAnchorWithOpposite<IConstrainable.Vertical> GetTopAnchor(this View self)
             => self.GetGenericConstraintSystem().GetTopAnchor(self);
 
         [Pure]
-        public static IAnchor.Typed<IConstrainable.Vertical>.Positional.WithOpposite GetBottomAnchor(this View self)
+        public static ITypedPositionalAnchorWithOpposite<IConstrainable.Vertical> GetBottomAnchor(this View self)
             => self.GetGenericConstraintSystem().GetBottomAnchor(self);
 
         [Pure]
-        public static IAnchor.Typed<IConstrainable.Horizontal>.Length GetWidthAnchor(this View self)
+        public static ITypedLengthAnchor<IConstrainable.Horizontal> GetWidthAnchor(this View self)
             => self.GetGenericConstraintSystem().GetWidthAnchor(self);
 
         [Pure]
-        public static IAnchor.Typed<IConstrainable.Vertical>.Length GetHeightAnchor(this View self)
+        public static ITypedLengthAnchor<IConstrainable.Vertical> GetHeightAnchor(this View self)
             => self.GetGenericConstraintSystem().GetHeightAnchor(self);
 
         [Pure]
-        public static IAnchor.Typed<IConstrainable.Horizontal>.Positional GetCenterXAnchor(this View self)
+        public static ITypedPositionalAnchor<IConstrainable.Horizontal> GetCenterXAnchor(this View self)
             => self.GetGenericConstraintSystem().GetCenterXAnchor(self);
 
         [Pure]
-        public static IAnchor.Typed<IConstrainable.Vertical>.Positional GetCenterYAnchor(this View self)
+        public static ITypedPositionalAnchor<IConstrainable.Vertical> GetCenterYAnchor(this View self)
             => self.GetGenericConstraintSystem().GetCenterYAnchor(self);
 
         #endregion

@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Nanoray.Umbral.Core.Geometry;
 
 namespace Nanoray.Umbral.Core
 {
-    public class View
+    public partial class View
     {
-        #region Hierarchy
-
         public event ParentChildEvent<View, View>? AddedToRoot;
         public event ParentChildEvent<View, View>? RemovedFromRoot;
         public event ParentChildEvent<View, View>? AddedToSuperview;
@@ -108,59 +105,5 @@ namespace Nanoray.Umbral.Core
             RemovedFromSuperview?.Invoke(superview, this);
             Root = null;
         }
-
-        #endregion
-
-        #region Positioning
-
-        public event OwnerValueChangeEvent<View, UVector2>? SizeChanged;
-
-        public UVector2 Position { get; set; } = UVector2.Zero;
-
-        public UVector2 Size
-        {
-            get => _size;
-            set
-            {
-                if (_size == value)
-                    return;
-                var oldValue = _size;
-                _size = value;
-                SizeChanged?.Invoke(this, oldValue, value);
-            }
-        }
-
-        private UVector2 _size = UVector2.Zero;
-
-        #endregion
-
-        #region View systems
-
-        public event ParentChildEvent<View, IViewSystem>? RegisteredInViewSystem;
-        public event ParentChildEvent<View, IViewSystem>? UnregisteredFromViewSystem;
-
-        public IReadOnlyList<IViewSystem> ViewSystems => _viewSystems;
-
-        private List<IViewSystem> _viewSystems = new();
-
-        public void RegisterInViewSystem(IViewSystem viewSystem)
-        {
-            if (_viewSystems.Contains(viewSystem))
-                return;
-            _viewSystems.Add(viewSystem);
-            viewSystem.OnRegister(this);
-            RegisteredInViewSystem?.Invoke(this, viewSystem);
-        }
-
-        public void UnregisterFromViewSystem(IViewSystem viewSystem)
-        {
-            if (!_viewSystems.Contains(viewSystem))
-                return;
-            viewSystem.OnUnregister(this);
-            _viewSystems.Remove(viewSystem);
-            UnregisteredFromViewSystem?.Invoke(this, viewSystem);
-        }
-
-        #endregion
     }
 }

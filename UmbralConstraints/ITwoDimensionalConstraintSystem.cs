@@ -1,43 +1,40 @@
 using System;
 using System.Diagnostics.Contracts;
+using Nanoray.Umbral.Constraints.Anchors;
 using Nanoray.Umbral.Core;
 
 namespace Nanoray.Umbral.Constraints
 {
     public interface IGenericTwoDimensionalConstraintSystem
     {
-        #region Constrainable views
-
         [Pure]
         IConstrainable.TwoDimensional AsConstrainable(View view);
-
-        #endregion
 
         #region View anchors
 
         [Pure]
-        IAnchor.Typed<IConstrainable.Horizontal>.Positional.WithOpposite GetLeftAnchor(View view);
+        ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal> GetLeftAnchor(View view);
 
         [Pure]
-        IAnchor.Typed<IConstrainable.Horizontal>.Positional.WithOpposite GetRightAnchor(View view);
+        ITypedPositionalAnchorWithOpposite<IConstrainable.Horizontal> GetRightAnchor(View view);
 
         [Pure]
-        IAnchor.Typed<IConstrainable.Vertical>.Positional.WithOpposite GetTopAnchor(View view);
+        ITypedPositionalAnchorWithOpposite<IConstrainable.Vertical> GetTopAnchor(View view);
 
         [Pure]
-        IAnchor.Typed<IConstrainable.Vertical>.Positional.WithOpposite GetBottomAnchor(View view);
+        ITypedPositionalAnchorWithOpposite<IConstrainable.Vertical> GetBottomAnchor(View view);
 
         [Pure]
-        IAnchor.Typed<IConstrainable.Horizontal>.Length GetWidthAnchor(View view);
+        ITypedLengthAnchor<IConstrainable.Horizontal> GetWidthAnchor(View view);
 
         [Pure]
-        IAnchor.Typed<IConstrainable.Vertical>.Length GetHeightAnchor(View view);
+        ITypedLengthAnchor<IConstrainable.Vertical> GetHeightAnchor(View view);
 
         [Pure]
-        IAnchor.Typed<IConstrainable.Horizontal>.Positional GetCenterXAnchor(View view);
+        ITypedPositionalAnchor<IConstrainable.Horizontal> GetCenterXAnchor(View view);
 
         [Pure]
-        IAnchor.Typed<IConstrainable.Vertical>.Positional GetCenterYAnchor(View view);
+        ITypedPositionalAnchor<IConstrainable.Vertical> GetCenterYAnchor(View view);
 
         #endregion
 
