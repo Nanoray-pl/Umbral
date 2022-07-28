@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Nanoray.Umbral.Core;
-using Nanoray.Umbral.Core.Geometry;
+using Nanoray.Umbral.UI;
+using Nanoray.Umbral.UI.Geometry;
 
 namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
 {

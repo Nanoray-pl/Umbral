@@ -37,6 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UmbralConstraints\UmbralConstraints.csproj" />
-    <ProjectReference Include="..\UmbralCore\UmbralCore.csproj" />
+    <ProjectReference Include="..\UmbralUI\UmbralUI.csproj" />
   </ItemGroup>
 </Project>

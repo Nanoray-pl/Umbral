@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using Nanoray.Umbral.Constraints.Anchors;
-using Nanoray.Umbral.Core;
+using Nanoray.Umbral.UI;
 
 namespace Nanoray.Umbral.Constraints.TwoDimensionalExtensions
 {

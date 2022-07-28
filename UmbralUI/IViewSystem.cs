@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace Nanoray.Umbral.Core
+namespace Nanoray.Umbral.UI
 {
     public interface IViewSystem
     {

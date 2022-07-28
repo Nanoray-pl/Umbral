@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Cassowary;
 using Nanoray.Umbral.Constraints.Anchors;
-using Nanoray.Umbral.Core;
+using Nanoray.Umbral.UI;
 
 namespace Nanoray.Umbral.Constraints.Cassowary
 {

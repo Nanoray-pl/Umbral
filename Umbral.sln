@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralCore", "UmbralCore\UmbralCore.csproj", "{90C36E32-9D31-4687-B206-55FB0E757156}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralUI", "UmbralUI\UmbralUI.csproj", "{90C36E32-9D31-4687-B206-55FB0E757156}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralConstraints", "UmbralConstraints\UmbralConstraints.csproj", "{B2A1823F-10BB-48D4-A7B6-EC0E840F331B}"
 EndProject

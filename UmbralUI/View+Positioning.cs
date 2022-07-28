@@ -1,6 +1,6 @@
-using Nanoray.Umbral.Core.Geometry;
+using Nanoray.Umbral.UI.Geometry;
 
-namespace Nanoray.Umbral.Core
+namespace Nanoray.Umbral.UI
 {
     public partial class View
     {

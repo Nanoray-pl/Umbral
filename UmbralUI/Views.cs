@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
-using Nanoray.Umbral.Core.Geometry;
+using Nanoray.Umbral.UI.Geometry;
 
-namespace Nanoray.Umbral.Core
+namespace Nanoray.Umbral.UI
 {
     public enum ViewVisitingOrder
     {

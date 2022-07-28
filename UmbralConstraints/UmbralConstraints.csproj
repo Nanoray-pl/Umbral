@@ -36,9 +36,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UmbralCore\UmbralCore.csproj" />
+    <Folder Include="Anchors\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Anchors\" />
+    <ProjectReference Include="..\UmbralUI\UmbralUI.csproj" />
   </ItemGroup>
 </Project>

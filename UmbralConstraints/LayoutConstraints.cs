@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using Nanoray.Umbral.Constraints.Anchors;
-using Nanoray.Umbral.Core;
+using Nanoray.Umbral.UI;
 
 namespace Nanoray.Umbral.Constraints
 {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Nanoray.Umbral.Core.Geometry
+namespace Nanoray.Umbral.UI.Geometry
 {
     public readonly struct UVector2 : IEquatable<UVector2>
     {

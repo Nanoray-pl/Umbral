@@ -1,4 +1,4 @@
-namespace Nanoray.Umbral.Core
+namespace Nanoray.Umbral.UI
 {
     public enum LayoutTextDirection
     {

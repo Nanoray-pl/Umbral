@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using Nanoray.Umbral.Core;
+using Nanoray.Umbral.UI;
 
 namespace Nanoray.Umbral.Constraints
 {

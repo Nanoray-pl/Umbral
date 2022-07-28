@@ -1,6 +1,6 @@
 using System;
 using Nanoray.Umbral.Constraints.Anchors;
-using Nanoray.Umbral.Core;
+using Nanoray.Umbral.UI;
 using System.Diagnostics.Contracts;
 
 namespace Nanoray.Umbral.Constraints

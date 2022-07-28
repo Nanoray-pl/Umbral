@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Nanoray.Umbral.Core
+namespace Nanoray.Umbral.UI
 {
     public partial class View
     {
