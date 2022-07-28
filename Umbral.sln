@@ -12,9 +12,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralCore", "UmbralCore\Um
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralConstraints", "UmbralConstraints\UmbralConstraints.csproj", "{B2A1823F-10BB-48D4-A7B6-EC0E840F331B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbralCassowaryConstraints", "UmbralCassowaryConstraints\UmbralCassowaryConstraints.csproj", "{E5A35DF8-3D56-4B88-A38D-C3F472B22C02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralCassowaryConstraints", "UmbralCassowaryConstraints\UmbralCassowaryConstraints.csproj", "{E5A35DF8-3D56-4B88-A38D-C3F472B22C02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbralTwoDimensionalConstraintExtensions", "UmbralTwoDimensionalConstraintExtensions\UmbralTwoDimensionalConstraintExtensions.csproj", "{651D08F4-5792-4C1A-A957-B7428CD70D7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralTwoDimensionalConstraintExtensions", "UmbralTwoDimensionalConstraintExtensions\UmbralTwoDimensionalConstraintExtensions.csproj", "{651D08F4-5792-4C1A-A957-B7428CD70D7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

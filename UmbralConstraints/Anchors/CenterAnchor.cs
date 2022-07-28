@@ -10,12 +10,21 @@ namespace Nanoray.Umbral.Constraints.Anchors
 
         public CenterAnchor(
             TConstrainable owner,
+            Func<LinearExpression> expressionProvider,
+            string anchorName,
+            Func<TConstrainable, ITypedPositionalAnchor<TConstrainable>> anchorFunction
+        ) : base(owner, expressionProvider, anchorName)
+        {
+            this.AnchorFunction = anchorFunction;
+        }
+
+        public CenterAnchor(
+            TConstrainable owner,
             LinearExpression expression,
             string anchorName,
             Func<TConstrainable, ITypedPositionalAnchor<TConstrainable>> anchorFunction
-        ) : base(owner, expression, anchorName)
+        ) : this(owner, () => expression, anchorName, anchorFunction)
         {
-            this.AnchorFunction = anchorFunction;
         }
 
         /// <inheritdoc/>

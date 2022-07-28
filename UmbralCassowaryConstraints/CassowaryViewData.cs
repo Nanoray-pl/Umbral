@@ -75,13 +75,23 @@ namespace Nanoray.Umbral.Constraints.Cassowary
             LazyRight = new(() => new(constraintSystem.AsConstrainable(owner), RightVariable.Value, "Right", c => c.RightAnchor, c => c.LeftAnchor));
             LazyTop = new(() => new(constraintSystem.AsConstrainable(owner), TopVariable.Value, "Top", c => c.TopAnchor, c => c.BottomAnchor));
             LazyBottom = new(() => new(constraintSystem.AsConstrainable(owner), BottomVariable.Value, "Bottom", c => c.BottomAnchor, c => c.TopAnchor));
-            // TODO: proper RTL support
-            LazyLeading = new(() => new(constraintSystem.AsConstrainable(owner), LeftVariable.Value, "Leading", c => c.LeadingAnchor, c => c.TrailingAnchor));
-            LazyTrailing = new(() => new(constraintSystem.AsConstrainable(owner), RightVariable.Value, "Trailing", c => c.TrailingAnchor, c => c.LeadingAnchor));
             LazyWidth = new(() => new(constraintSystem.AsConstrainable(owner), RightVariable.Value - LeftVariable.Value, "Width", c => c.WidthAnchor));
             LazyHeight = new(() => new(constraintSystem.AsConstrainable(owner), BottomVariable.Value - TopVariable.Value, "Height", c => c.HeightAnchor));
             LazyCenterX = new(() => new(constraintSystem.AsConstrainable(owner), LeftVariable.Value - WidthAnchor.Expression * 0.5f, "CenterX", c => c.CenterXAnchor));
             LazyCenterY = new(() => new(constraintSystem.AsConstrainable(owner), TopVariable.Value - HeightAnchor.Expression * 0.5f, "CenterY", c => c.CenterYAnchor));
+
+            LazyLeading = new(() => new(constraintSystem.AsConstrainable(owner), () => constraintSystem.GetEffectiveLayoutTextDirection(owner) switch
+            {
+                LayoutTextDirection.LeftToRight => LeftVariable.Value,
+                LayoutTextDirection.RightToLeft => RightVariable.Value,
+                _ => throw new InvalidOperationException($"{nameof(LayoutTextDirection)} has an invalid value."),
+            }, "Leading", c => c.LeadingAnchor, c => c.TrailingAnchor));
+            LazyTrailing = new(() => new(constraintSystem.AsConstrainable(owner), () => constraintSystem.GetEffectiveLayoutTextDirection(owner) switch
+            {
+                LayoutTextDirection.LeftToRight => RightVariable.Value,
+                LayoutTextDirection.RightToLeft => LeftVariable.Value,
+                _ => throw new InvalidOperationException($"{nameof(LayoutTextDirection)} has an invalid value."),
+            }, "Trailing", c => c.TrailingAnchor, c => c.LeadingAnchor));
 
             RightAfterLeftConstraint = new(() => RightAnchor.MakeConstraintTo(ConstraintSystem.RequiredPriority, LeftAnchor, relation: LayoutConstraintRelation.GreaterThanOrEqual));
             BottomAfterTopConstraint = new(() => BottomAnchor.MakeConstraintTo(ConstraintSystem.RequiredPriority, TopAnchor, relation: LayoutConstraintRelation.GreaterThanOrEqual));

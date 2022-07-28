@@ -11,14 +11,24 @@ namespace Nanoray.Umbral.Constraints.Anchors
 
         public EdgeAnchor(
             TConstrainable owner,
+            Func<LinearExpression> expressionProvider,
+            string anchorName,
+            Func<TConstrainable, ITypedPositionalAnchorWithOpposite<TConstrainable>> anchorFunction,
+            Func<TConstrainable, ITypedPositionalAnchorWithOpposite<TConstrainable>> oppositeAnchorFunction
+        ) : base(owner, expressionProvider, anchorName)
+        {
+            this.AnchorFunction = anchorFunction;
+            this.OppositeAnchorFunction = oppositeAnchorFunction;
+        }
+
+        public EdgeAnchor(
+            TConstrainable owner,
             LinearExpression expression,
             string anchorName,
             Func<TConstrainable, ITypedPositionalAnchorWithOpposite<TConstrainable>> anchorFunction,
             Func<TConstrainable, ITypedPositionalAnchorWithOpposite<TConstrainable>> oppositeAnchorFunction
-        ) : base(owner, expression, anchorName)
+        ) : this(owner, () => expression, anchorName, anchorFunction, oppositeAnchorFunction)
         {
-            this.AnchorFunction = anchorFunction;
-            this.OppositeAnchorFunction = oppositeAnchorFunction;
         }
 
         /// <inheritdoc/>

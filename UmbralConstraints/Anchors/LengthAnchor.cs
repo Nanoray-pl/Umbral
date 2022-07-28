@@ -10,12 +10,21 @@ namespace Nanoray.Umbral.Constraints.Anchors
 
         public LengthAnchor(
             TConstrainable owner,
+            Func<LinearExpression> expressionProvider,
+            string anchorName,
+            Func<TConstrainable, ITypedLengthAnchor<TConstrainable>> anchorFunction
+        ) : base(owner, expressionProvider, anchorName)
+        {
+            this.AnchorFunction = anchorFunction;
+        }
+
+        public LengthAnchor(
+            TConstrainable owner,
             LinearExpression expression,
             string anchorName,
             Func<TConstrainable, ITypedLengthAnchor<TConstrainable>> anchorFunction
-        ) : base(owner, expression, anchorName)
+        ) : this(owner, () => expression, anchorName, anchorFunction)
         {
-            this.AnchorFunction = anchorFunction;
         }
 
         /// <inheritdoc/>

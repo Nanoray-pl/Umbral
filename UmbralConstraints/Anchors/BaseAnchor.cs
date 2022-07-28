@@ -1,16 +1,26 @@
+using System;
+
 namespace Nanoray.Umbral.Constraints.Anchors
 {
     public abstract class BaseAnchor : IAnchor
     {
         public IConstrainable Owner { get; private set; }
-        public LinearExpression Expression { get; private set; }
+
+        public LinearExpression Expression
+            => ExpressionProvider();
+
+        private readonly Func<LinearExpression> ExpressionProvider;
         private readonly string AnchorName;
 
-        public BaseAnchor(IConstrainable owner, LinearExpression expression, string anchorName)
+        public BaseAnchor(IConstrainable owner, Func<LinearExpression> expressionProvider, string anchorName)
         {
             this.Owner = owner;
-            this.Expression = expression;
+            this.ExpressionProvider = expressionProvider;
             this.AnchorName = anchorName;
+        }
+
+        public BaseAnchor(IConstrainable owner, LinearExpression expression, string anchorName) : this(owner, () => expression, anchorName)
+        {
         }
 
         /// <inheritdoc/>
