@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Umbral", "Umbral\Umbral.csproj", "{B6ED2CF2-6D46-486E-AC4E-8CBD491D30CE}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralUI", "UmbralUI\UmbralUI.csproj", "{90C36E32-9D31-4687-B206-55FB0E757156}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralConstraints", "UmbralConstraints\UmbralConstraints.csproj", "{B2A1823F-10BB-48D4-A7B6-EC0E840F331B}"
@@ -16,12 +18,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralCassowaryConstraints"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbralTwoDimensionalConstraintExtensions", "UmbralTwoDimensionalConstraintExtensions\UmbralTwoDimensionalConstraintExtensions.csproj", "{651D08F4-5792-4C1A-A957-B7428CD70D7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbral_Gen", "Umbral_Gen\Umbral_Gen.csproj", "{349049B8-117C-4E73-81C5-D0E1A36DE85C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6ED2CF2-6D46-486E-AC4E-8CBD491D30CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6ED2CF2-6D46-486E-AC4E-8CBD491D30CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6ED2CF2-6D46-486E-AC4E-8CBD491D30CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6ED2CF2-6D46-486E-AC4E-8CBD491D30CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90C36E32-9D31-4687-B206-55FB0E757156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90C36E32-9D31-4687-B206-55FB0E757156}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90C36E32-9D31-4687-B206-55FB0E757156}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,6 +46,10 @@ Global
 		{651D08F4-5792-4C1A-A957-B7428CD70D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{651D08F4-5792-4C1A-A957-B7428CD70D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{651D08F4-5792-4C1A-A957-B7428CD70D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{349049B8-117C-4E73-81C5-D0E1A36DE85C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{349049B8-117C-4E73-81C5-D0E1A36DE85C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{349049B8-117C-4E73-81C5-D0E1A36DE85C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{349049B8-117C-4E73-81C5-D0E1A36DE85C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
