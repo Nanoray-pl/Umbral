@@ -2,6 +2,7 @@
   <PropertyGroup>
     <RootNamespace>Nanoray.Umbral</RootNamespace>
     <TargetFramework>net5.0</TargetFramework>
+    <LangVersion>11.0</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Company>Nanoray</Company>
@@ -31,8 +32,5 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Umbral_Gen\Umbral_Gen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 </Project>
