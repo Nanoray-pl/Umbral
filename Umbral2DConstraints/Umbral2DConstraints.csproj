@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <RootNamespace>Nanoray.Umbral</RootNamespace>
+    <RootNamespace>Nanoray.Umbral.TwoD.Constraints</RootNamespace>
     <TargetFrameworks>net5.0;net7.0</TargetFrameworks>
     <LangVersion>11.0</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -14,7 +14,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.0.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Description>An engine-agnostic UI framework.</Description>
+    <Description>An extension to the Umbral constraint system for 2D UIs.</Description>
     <Copyright>Nanoray</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -32,5 +32,8 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+    <ProjectReference Include="..\Umbral\Umbral.csproj" />
+    <ProjectReference Include="..\Umbral2D\Umbral2D.csproj" />
+    <ProjectReference Include="..\UmbralConstraints\UmbralConstraints.csproj" />
   </ItemGroup>
 </Project>

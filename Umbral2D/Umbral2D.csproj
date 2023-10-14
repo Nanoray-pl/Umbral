@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <RootNamespace>Nanoray.Umbral</RootNamespace>
+    <RootNamespace>Nanoray.Umbral.TwoD</RootNamespace>
     <TargetFrameworks>net5.0;net7.0</TargetFrameworks>
     <LangVersion>11.0</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -14,7 +14,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.0.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Description>An engine-agnostic UI framework.</Description>
+    <Description>A 2D scaffolding for Umbral.</Description>
     <Copyright>Nanoray</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -32,5 +32,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+    <ProjectReference Include="..\Umbral\Umbral.csproj" />
   </ItemGroup>
 </Project>
