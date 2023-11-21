@@ -3,25 +3,22 @@ using System.Numerics;
 
 namespace Nanoray.Umbral.Constraints;
 
-public interface IConstraintViewSystem<TBaseView, TViewSystem, TVector, TVectorComponent, TPriority, TMultiplier> : IViewSystem<TBaseView, TViewSystem, TVector, TVectorComponent>
-    where TBaseView : IConstrainableView<TBaseView, TViewSystem, TVector, TVectorComponent, TPriority, TMultiplier>
-    where TViewSystem : IConstraintViewSystem<TBaseView, TViewSystem, TVector, TVectorComponent, TPriority, TMultiplier>
+public interface IConstraintViewSystem<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> : IViewSystem<TBaseView, TViewSystem, TVector, TVectorComponent>
+    where TBaseView : IConstrainableView<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue>
+    where TViewSystem : IConstraintViewSystem<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue>
     where TVector : struct
+    where TConstraintPriority : struct, IComparable<TConstraintPriority>, IEquatable<TConstraintPriority>
 #if NET7_0_OR_GREATER
     where TVectorComponent : struct, INumber<TVectorComponent>
-    where TPriority : struct, INumber<TPriority>
-    where TMultiplier : struct, INumber<TMultiplier>
+    where TConstraintValue : struct, INumber<TConstraintValue>
 #else
-    where TVectorComponent : struct, IComparable<TVectorComponent>
-    where TPriority : struct, IComparable<TPriority>
-    where TMultiplier : struct, IComparable<TMultiplier>
+    where TVectorComponent : struct, IComparable<TVectorComponent>, IEquatable<TVectorComponent>
+    where TConstraintValue : struct, IComparable<TConstraintValue>, IEquatable<TConstraintValue>
 #endif
 {
-    TPriority DisabledPriority { get; }
-    TPriority LowPriority { get; }
-    TPriority MediumPriority { get; }
-    TPriority HighPriority { get; }
-    TPriority RequiredPriority { get; }
-
-    TPriority MixPriorities(TPriority a, TPriority b, TMultiplier mix);
+    TConstraintPriority DisabledPriority { get; }
+    TConstraintPriority LowPriority { get; }
+    TConstraintPriority MediumPriority { get; }
+    TConstraintPriority HighPriority { get; }
+    TConstraintPriority RequiredPriority { get; }
 }

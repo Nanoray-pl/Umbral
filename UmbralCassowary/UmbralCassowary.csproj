@@ -34,6 +34,6 @@
     </None>
     <ProjectReference Include="..\Umbral\Umbral.csproj" />
     <ProjectReference Include="..\UmbralConstraints\UmbralConstraints.csproj" />
-    <PackageReference Include="Cassowary.CSharp" Version="1.0.1" />
+    <PackageReference Include="Kiwi" Version="1.0.0" />
   </ItemGroup>
 </Project>

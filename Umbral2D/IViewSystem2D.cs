@@ -10,7 +10,7 @@ public interface IViewSystem2D<TBaseView, TViewSystem, TVector, TVectorComponent
 #if NET7_0_OR_GREATER
     where TVectorComponent : struct, INumber<TVectorComponent>
 #else
-    where TVectorComponent : struct, IComparable<TVectorComponent>
+    where TVectorComponent : struct, IComparable<TVectorComponent>, IEquatable<TVectorComponent>
 #endif
 {
     TVectorComponent GetX(TVector vector);

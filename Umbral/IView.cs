@@ -11,7 +11,7 @@ public interface IView<TBaseView, TViewSystem, TVector, TVectorComponent>
 #if NET7_0_OR_GREATER
     where TVectorComponent : struct, INumber<TVectorComponent>
 #else
-    where TVectorComponent : struct, IComparable<TVectorComponent>
+    where TVectorComponent : struct, IComparable<TVectorComponent>, IEquatable<TVectorComponent>
 #endif
 {
     TViewSystem ViewSystem { get; }
@@ -19,6 +19,18 @@ public interface IView<TBaseView, TViewSystem, TVector, TVectorComponent>
     TBaseView? Parent { get; }
     IEnumerable<TBaseView> Subviews { get; }
 
-    TVector Position { get; set; }
+    TVector MinPosition { get; set; }
     TVector Size { get; set; }
+
+    TVector MaxPosition
+    {
+        get => ViewSystem.Add(MinPosition, Size);
+        set => MinPosition = ViewSystem.Subtract(value, Size);
+    }
+
+    TVector Center
+    {
+        get => ViewSystem.Add(MinPosition, ViewSystem.Multiply(Size, ViewSystem.Half));
+        set => MinPosition = ViewSystem.Subtract(value, ViewSystem.Multiply(Size, ViewSystem.Half));
+    }
 }
