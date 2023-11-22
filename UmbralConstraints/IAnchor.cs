@@ -18,5 +18,5 @@ public interface IAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TCon
 {
     TBaseView Owner { get; }
 
-    bool IsCompatibleWithAnchor(IAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> other);
+    IAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> GetSameAnchor(TBaseView view);
 }

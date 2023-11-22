@@ -4,11 +4,12 @@ using System.Runtime.CompilerServices;
 
 namespace Nanoray.Umbral.Constraints;
 
-public interface ILengthAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> : IAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue>
+public interface IPositionalAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue, TAxis> : IAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue>
     where TBaseView : IConstrainableView<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue>
     where TViewSystem : IConstraintViewSystem<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue>
     where TVector : struct
     where TConstraintPriority : struct, IComparable<TConstraintPriority>, IEquatable<TConstraintPriority>
+    where TAxis : IAxis
 #if NET7_0_OR_GREATER
     where TVectorComponent : struct, INumber<TVectorComponent>
     where TConstraintValue : struct, INumber<TConstraintValue>
@@ -17,16 +18,17 @@ public interface ILengthAnchor<TBaseView, TViewSystem, TVector, TVectorComponent
     where TConstraintValue : struct, IComparable<TConstraintValue>, IEquatable<TConstraintValue>
 #endif
 {
-    new ILengthAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> GetSameAnchor(TBaseView view);
+    new IPositionalAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue, TAxis> GetSameAnchor(TBaseView view);
 
     IAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> IAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue>.GetSameAnchor(TBaseView view)
         => GetSameAnchor(view);
 
+    IPositionalAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue, TAxis> GetOppositeAnchor(TBaseView view);
+
     LayoutConstraint<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> MakeConstraint(
         LayoutConstraintRelation relation,
-        ILengthAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> other,
+        IPositionalAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue, TAxis> other,
         string? identifier = null,
-        TConstraintValue? multiplier = null,
         TConstraintValue? constant = null,
         TConstraintPriority? priority = null,
         [CallerFilePath] string? callerFilePath = null,

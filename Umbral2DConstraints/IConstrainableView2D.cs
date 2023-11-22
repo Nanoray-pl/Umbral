@@ -17,10 +17,10 @@ public interface IConstrainableView2D<TBaseView, TViewSystem, TVector, TVectorCo
     where TConstraintValue : struct, IComparable<TConstraintValue>, IEquatable<TConstraintValue>
 #endif
 {
-    ITypedPositionalAnchorWithOpposite<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> MinXAnchor { get; }
-    ITypedPositionalAnchorWithOpposite<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> MaxXAnchor { get; }
-    ITypedPositionalAnchorWithOpposite<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> MinYAnchor { get; }
-    ITypedPositionalAnchorWithOpposite<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> MaxYAnchor { get; }
-    ITypedLengthAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> WidthAnchor { get; }
-    ITypedLengthAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> HeightAnchor { get; }
+    IPositionalAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue, IAxis2D.IHorizontal> MinXAnchor { get; }
+    IPositionalAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue, IAxis2D.IHorizontal> MaxXAnchor { get; }
+    IPositionalAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue, IAxis2D.IVertical> MinYAnchor { get; }
+    IPositionalAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue, IAxis2D.IVertical> MaxYAnchor { get; }
+    ILengthAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> WidthAnchor { get; }
+    ILengthAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue> HeightAnchor { get; }
 }
