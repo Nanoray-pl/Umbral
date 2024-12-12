@@ -27,6 +27,13 @@ public sealed class LayoutConstraint<TBaseView, TViewSystem, TVector, TVectorCom
 
     public TBaseView? Owner { get; private set; }
 
-    public IReadOnlyCollection<IAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue>> Anchors
-        => Anchor2 is null ? new[] { Anchor1 } : new[] { Anchor1, Anchor2 };
+    public IEnumerable<IAnchor<TBaseView, TViewSystem, TVector, TVectorComponent, TConstraintPriority, TConstraintValue>> Anchors
+    {
+        get
+        {
+            yield return Anchor1;
+            if (Anchor2 is not null)
+                yield return Anchor2;
+        }
+    }
 }
